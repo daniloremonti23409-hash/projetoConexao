@@ -9,8 +9,8 @@ $livros =$pdo->query("SELECT id, titulo FROM livros WHERE disponivel = 1")
 if($_SERVER["REQUEST_METHOD"]==="POST"){
 $id_usuario = $_POST['usuario'];
 $id_livro = $_POST['livro'];
-$data_aluguel = date('Y - m - d');
-$data_devolucao = date('Y - m - d', strtotime ('+7 days'));
+$data_aluguel = date('Y-m-d');
+$data_devolucao = date('Y-m-d', strtotime ('+7 days'));
 try{
 
 $sql = "INSERT INTO alugueis
@@ -20,7 +20,7 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute([
 ':usuario'=>$id_usuario,
 ':livro'=>$id_livro,
-':alguel'=>$data_aluguel,
+':aluguel'=>$data_aluguel,
 ':devolucao'=>$data_devolucao
 
 ]);
